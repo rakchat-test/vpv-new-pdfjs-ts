@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { VPdfViewer, type ToolbarOptions } from "@vue-pdf-viewer/viewer";
 import AppPdfViewer from "./components/AppPdfViewer.vue";
-import { dependencies, devDependencies } from "../package.json";
+import { dependencies } from "../package.json";
 
 const toolbarOptions: Partial<ToolbarOptions> | false = false;
 
 const vpvViewerVersion = dependencies["@vue-pdf-viewer/viewer"];
 const vpvAnnotationVersion = dependencies["@vue-pdf-viewer/annotation"];
-const pdfjsDistVersion = devDependencies["pdfjs-dist"];
+const pdfjsDistVersion = dependencies["pdfjs-dist"];
 
 const pdfSrc = "/test-file.pdf";
 </script>
