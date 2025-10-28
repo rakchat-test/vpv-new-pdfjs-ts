@@ -11,7 +11,8 @@
   "dependencies": {
     "@vue-pdf-viewer/annotation": "latest",
     "@vue-pdf-viewer/viewer": "latest",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "pdfjs-dist": "5.4.296"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.3",
@@ -21,7 +22,7 @@
   },
   "pnpm": {
     "overrides": {
-      "pdfjs-dist": "4.10.38"
+      "pdfjs-dist": "5.4.296"
     }
   }
 }

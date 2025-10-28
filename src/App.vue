@@ -7,7 +7,7 @@ import { dependencies } from "../package.json";
 
 const vpvViewerVersion = dependencies["@vue-pdf-viewer/viewer"];
 const vpvAnnotationVersion = dependencies["@vue-pdf-viewer/annotation"];
-// const pdfjsDistVersion = dependencies["pdfjs-dist"];
+const pdfjsDistVersion = dependencies["pdfjs-dist"];
 
 const pdfSrc = "/test-file.pdf";
 </script>
@@ -22,7 +22,7 @@ const pdfSrc = "/test-file.pdf";
         vpv-annotation: <b>v{{ vpvAnnotationVersion }}</b>
       </div>
       <div :style="{ fontSize: '20px', color: 'red' }">
-        <!-- pdfjs-dist: <b>v{{ pdfjsDistVersion }}</b> -->
+        pdfjs-dist: <b>v{{ pdfjsDistVersion }}</b>
       </div>
     </div>
     <br />
