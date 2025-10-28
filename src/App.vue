@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { VPdfViewer, type ToolbarOptions } from "@vue-pdf-viewer/viewer";
+// import { VPdfViewer, type ToolbarOptions } from "@vue-pdf-viewer/viewer";
 import AppPdfViewer from "./components/AppPdfViewer.vue";
 import { dependencies } from "../package.json";
 
-const toolbarOptions: Partial<ToolbarOptions> | false = false;
+// const toolbarOptions: Partial<ToolbarOptions> | false = false;
 
 const vpvViewerVersion = dependencies["@vue-pdf-viewer/viewer"];
 const vpvAnnotationVersion = dependencies["@vue-pdf-viewer/annotation"];
-const pdfjsDistVersion = dependencies["pdfjs-dist"];
+// const pdfjsDistVersion = dependencies["pdfjs-dist"];
 
 const pdfSrc = "/test-file.pdf";
 </script>
@@ -22,11 +22,11 @@ const pdfSrc = "/test-file.pdf";
         vpv-annotation: <b>v{{ vpvAnnotationVersion }}</b>
       </div>
       <div :style="{ fontSize: '20px', color: 'red' }">
-        pdfjs-dist: <b>v{{ pdfjsDistVersion }}</b>
+        <!-- pdfjs-dist: <b>v{{ pdfjsDistVersion }}</b> -->
       </div>
     </div>
     <br />
-    <h2>Default Toolbar</h2>
+    <!-- <h2>Default Toolbar</h2>
     <div class="pdf-viewer-wrapper">
       <VPdfViewer :src="pdfSrc" />
     </div>
@@ -37,7 +37,7 @@ const pdfSrc = "/test-file.pdf";
     <h2>Mobile</h2>
     <div class="pdf-viewer-wrapper-mobile">
       <VPdfViewer :src="pdfSrc" />
-    </div>
+    </div> -->
     <AppPdfViewer
       :src="pdfSrc"
       title="Default Toolbar with Annotation"

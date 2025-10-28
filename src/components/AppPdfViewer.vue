@@ -3,8 +3,6 @@ import VPdfAnnotation from "@vue-pdf-viewer/annotation";
 import { VPdfViewer } from "@vue-pdf-viewer/viewer";
 import { computed, ref, watch, withDefaults } from "vue";
 
-import pdfWorker from "pdfjs-dist/build/pdf.worker?url"; // Adjust the path based on the `pdfjs-dist` version
-
 interface Props {
   title: string;
   annotateEnabled?: boolean;
@@ -42,8 +40,7 @@ watch(viewerRef, (newVal) => {
       {{ props.title }}
     </h2>
     <div :style="{ width: '1028px', height: '700px', margin: '0 auto' }">
-      <!-- <VPdfViewer v-bind="vpvProps" ref="viewerRef" /> -->
-      <VPdfViewer :workerUrl="pdfWorker" v-bind="vpvProps" ref="viewerRef" />
+      <VPdfViewer v-bind="vpvProps" ref="viewerRef" />
     </div>
   </div>
 </template>
