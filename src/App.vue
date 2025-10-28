@@ -1,9 +1,10 @@
 <script setup lang="ts">
-// import { VPdfViewer, type ToolbarOptions } from "@vue-pdf-viewer/viewer";
+import { VPdfViewer, type ToolbarOptions } from "@vue-pdf-viewer/viewer";
 import AppPdfViewer from "./components/AppPdfViewer.vue";
 import { dependencies } from "../package.json";
+import pdfWorker from "pdfjs-dist/build/pdf.worker?url";
 
-// const toolbarOptions: Partial<ToolbarOptions> | false = false;
+const toolbarOptions: Partial<ToolbarOptions> | false = false;
 
 const vpvViewerVersion = dependencies["@vue-pdf-viewer/viewer"];
 const vpvAnnotationVersion = dependencies["@vue-pdf-viewer/annotation"];
@@ -26,18 +27,22 @@ const pdfSrc = "/test-file.pdf";
       </div>
     </div>
     <br />
-    <!-- <h2>Default Toolbar</h2>
+    <h2>Default Toolbar</h2>
     <div class="pdf-viewer-wrapper">
-      <VPdfViewer :src="pdfSrc" />
+      <VPdfViewer :workerUrl="pdfWorker" :src="pdfSrc" />
     </div>
     <h2>Without Toolbar</h2>
     <div class="pdf-viewer-wrapper">
-      <VPdfViewer :src="pdfSrc" :toolbar-options="toolbarOptions" />
+      <VPdfViewer
+        :workerUrl="pdfWorker"
+        :src="pdfSrc"
+        :toolbar-options="toolbarOptions"
+      />
     </div>
     <h2>Mobile</h2>
     <div class="pdf-viewer-wrapper-mobile">
-      <VPdfViewer :src="pdfSrc" />
-    </div> -->
+      <VPdfViewer :workerUrl="pdfWorker" :src="pdfSrc" />
+    </div>
     <AppPdfViewer
       :src="pdfSrc"
       title="Default Toolbar with Annotation"
