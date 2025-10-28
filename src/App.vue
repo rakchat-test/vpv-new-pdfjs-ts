@@ -9,8 +9,7 @@ const vpvViewerVersion = dependencies["@vue-pdf-viewer/viewer"];
 const vpvAnnotationVersion = dependencies["@vue-pdf-viewer/annotation"];
 const pdfjsDistVersion = devDependencies["pdfjs-dist"];
 
-const pdfSrc =
-  "https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf";
+const pdfSrc = "/test-file.pdf";
 </script>
 
 <template>
