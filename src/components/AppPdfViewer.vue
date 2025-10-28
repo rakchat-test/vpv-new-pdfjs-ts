@@ -1,54 +1,49 @@
 <script setup lang="ts">
-	import VPdfAnnotation from "@vue-pdf-viewer/annotation";
-	import { VPdfViewer, VPVBaseProps } from "@vue-pdf-viewer/viewer";
-	import { computed, ref, watch } from "vue";
+import VPdfAnnotation from "@vue-pdf-viewer/annotation";
+import { VPdfViewer } from "@vue-pdf-viewer/viewer";
+import { computed, ref, watch, withDefaults } from "vue";
 
-	const props = defineProps({
-		...VPVBaseProps,
-		title: {
-			type: String,
-			required: true,
-		},
-		annotateEnabled: {
-			type: Boolean,
-			required: false,
-			default: false,
-		},
-	} as const);
+import pdfWorker from "pdfjs-dist/build/pdf.worker?url"; // Adjust the path based on the `pdfjs-dist` version
 
-	const viewerRef = ref<InstanceType<typeof VPdfViewer> | null>(null);
+interface Props {
+  title: string;
+  annotateEnabled?: boolean;
+  src: string;
+}
 
-	const vpvProps = computed(() => {
-		// Destructure to exclude title and annotateEnabled from props
-		const { title, annotateEnabled, ...baseProps } = props;
+const props = withDefaults(defineProps<Props>(), {
+  annotateEnabled: false,
+});
 
-		// Create the final props object
-		const finalProps = {
-			...baseProps,
-		};
+const viewerRef = ref<InstanceType<typeof VPdfViewer> | null>(null);
 
-		// Add plugins conditionally with proper typing
-		if (annotateEnabled) {
-			(finalProps as any).plugins = [VPdfAnnotation()];
-		}
+const vpvProps = computed(() => {
+  // Create the final props object with src and other base props
+  const finalProps = {
+    src: props.src,
+  };
 
-		return finalProps;
-	});
-	watch(viewerRef, (newVal) => {
-		if (newVal) {
-			console.log("These are VPV instance properties", Object.keys(newVal));
-		}
-	});
+  // Add plugins conditionally with proper typing
+  if (props.annotateEnabled) {
+    (finalProps as any).plugins = [VPdfAnnotation()];
+  }
+
+  return finalProps;
+});
+watch(viewerRef, (newVal) => {
+  if (newVal) {
+    // console.log("These are VPV instance properties", Object.keys(newVal));
+  }
+});
 </script>
 <template>
-	<div>
-		<h2>
-			{{ props.title }}
-		</h2>
-		<div :style="{ width: '1028px', height: '700px', margin: '0 auto' }">
-			<VPdfViewer
-				v-bind="vpvProps"
-				ref="viewerRef" />
-		</div>
-	</div>
+  <div>
+    <h2>
+      {{ props.title }}
+    </h2>
+    <div :style="{ width: '1028px', height: '700px', margin: '0 auto' }">
+      <!-- <VPdfViewer v-bind="vpvProps" ref="viewerRef" /> -->
+      <VPdfViewer :workerUrl="pdfWorker" v-bind="vpvProps" ref="viewerRef" />
+    </div>
+  </div>
 </template>
